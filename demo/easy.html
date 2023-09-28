@@ -1,11 +1,15 @@
 <html>
 <head>
     <script type="module">
-        import {PassKeys} from "../index.mjs";
+        import {PasskeyManager} from "../index.mjs";
 
-        console.log({PassKeys});
+        const passkeyManager = new PasskeyManager();
 
+        await passkeyManager.load();
 
+        const manager = passkeyManager.manager;
+
+        console.log(manager);
 
 
     </script>
