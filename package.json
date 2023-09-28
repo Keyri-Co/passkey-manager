@@ -1,6 +1,6 @@
 {
     "name": "passkey-manager",
-    "version": "1.0.0",
+    "version": "2.0.0",
     "description": "Easy to set up, super safe websocket connection library",
     "main": "index.mjs",
     "types": "index.d.ts",
