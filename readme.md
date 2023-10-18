@@ -178,7 +178,7 @@ This will be used in future API Calls such as `register` and `authenticate`
 
 ### Register
 
-When verifying a user's registration request, forward whatever they sent you to our API [https://passkeys.keyri.com/v1/register]:
+When verifying a user's registration request, forward whatever they sent you to our API `https://passkeys.keyri.com/v1/register`:
 
 ```javascript
 // Data from user
@@ -195,7 +195,7 @@ curl -X POST https://passkeys.keyri.com/v1/register \
 
 ### Authenticate
 
-When verifying a user's authentication request, forward whatever they sent you to our API [https://passkeys.keyri.com/v1/authenticate]:
+When verifying a user's authentication request, forward whatever they sent you to our API `https://passkeys.keyri.com/v1/authenticate`:
 
 ```javascript
 // Data from user
