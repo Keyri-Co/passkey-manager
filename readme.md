@@ -49,28 +49,32 @@ If its verified, look up the user in your database by their passkey-id.
 
 Now that you've authenticated the user, set a session cookie or something.
 
-## Usage
+## Browser Library
 
-### Importing Passkey Manager
+### Importing and Initializing Passkey Manager
 
-To use Passkey Manager in your project, import it as follows:
+To use Passkey Manager in your project, import and instantiate it as follows:
 
 ```javascript
 import { KeyManager } from 'passkey-manager';
-```
 
-### Initializing Passkey Manager
-
-Initialize the Passkey Manager as shown below:
-
-```javascript
 const keyManager = new KeyManager();
 await keyManager.load();
+
 ```
 
-### Registering a User
+### Checking Registration Status
 
-Register a user and verify the registration with your API:
+Determine if the user has a Passkey on your site with the current browser:
+
+```javascript
+const status = await keyManager.manager.RegistrationStatus();
+console.log('Registration Status:', status);
+```
+
+### Creating a Passkey
+
+You can create a new Passkey by triggering the `register` method, and sending the response to your API. (Replace `yourApi.post` with your API endpoint.)
 
 ```javascript
 try {
@@ -80,11 +84,10 @@ try {
   console.error('Error Registering User:', error);
 }
 ```
-Replace `yourApi.post` with your API endpoint.
 
-### Authenticating a User
+### Authenticating a Passkey
 
-Authenticate a user and verify the authentication with your API:
+You can have the user verify their Passkey by using the `authenticate` method and sending the response to your API.
 
 ```javascript
 try {
@@ -104,14 +107,7 @@ const success = await keyManager.manager.autoFill();
 console.log('Auto-fill Success:', success);
 ```
 
-### Checking Registration Status
 
-Determine if the user has previously registered using the current browser:
-
-```javascript
-const status = await keyManager.manager.RegistrationStatus();
-console.log('Registration Status:', status);
-```
 
 ## Client Library Documentation
 
