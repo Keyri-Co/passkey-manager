@@ -168,13 +168,12 @@ which returns the following:
 ```
 ### Register
 
-Forward whatever the client sent you (which should look like this):
+When verifying a user's registration request, forward whatever they sent you to our API [https://passkeys.keyri.com/v1/register]:
 
 ```javascript
+// Data from user
 {"id": "xxx", "payload": "eyJhd...xe=="}
 ```
-
-to https://passkeys.keyri.com/v1/register
 
 ```bash
 curl -X POST https://passkeys.keyri.com/v1/register \
