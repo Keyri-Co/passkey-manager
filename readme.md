@@ -33,7 +33,7 @@ Once the user has logged in, they'll create a new passkey on their side and give
 
 Next, you send the payload to our API to be decrypted and verified.
 
-Once verified, you need to associate the passkey's ID with the user.
+Once verified, you need to associate the passkey's ID with that user in your database.
 
 That's it! In the future, anyone who can verify ownership of that passkey ID must be _THAT_ user! Simple, right?
 
