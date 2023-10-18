@@ -19,17 +19,35 @@ To install Passkey Manager, run the following command in your project directory:
 npm install passkey-manager
 ```
 
-## Main Concept
+## How It Works
 
-A passkey is like a phone number or email: once verified, it's associated with a user. If you want to verify a user in the future, you can just check that they control the email or phone-number they proved ownership of before.
+Passkeys can be used to identify your site's users with high confidence since they're
 
-But unlike those, a passkey is a unique key tied to a physical device, making it harder to compromise.
+a.) Locked to your user's device
+b.) Can't Be Stolen or Forged
+c.) Usually require biometrics to use
 
-When a user is logged in and registers a passkey, your job is to tie the passkey's ID to that user in your database.
+### Registration
 
-When a user is trying to authenticate and gives you a passkey id, your job is to look up the user by that ID.
+Once the user has logged in, they'll create a new passkey on their side and give you the passkey's ID and a payload - which verifies the passkey they created.
 
-We validate the passkey, we store the public key, we take care of the rest.
+Next, you send the payload to our API to be decrypted and verified.
+
+Once verified, you need to associate the passkey's ID with the user.
+
+That's it! In the future, anyone who can verify ownership of that passkey ID must be _THAT_ user! Simple, right?
+
+### Authentication
+
+This is flexible enough to work however you want to do it; but here's what works for us:
+
+Someone sends you a passkey id of ${x}, and a verification payload.
+
+Send the payload to our API to be verified.
+
+If its verified, look up the user in your database by their passkey-id.
+
+Now that you've authenticated the user, set a session cookie or something.
 
 ## Usage
 
