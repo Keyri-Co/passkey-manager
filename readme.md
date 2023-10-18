@@ -11,6 +11,8 @@
 - [Support](#support)
 - [License](#license)
 
+---
+
 ## Installation
 
 To install Passkey Manager, run the following command in your project directory:
@@ -19,21 +21,21 @@ To install Passkey Manager, run the following command in your project directory:
 npm install passkey-manager
 ```
 
-## How It Works
+## Key Concepts
 
 Passkeys can be used to identify your site's users with high confidence since they're
 
-- a.) Locked to your user's device
-- b.) Can't Be Stolen or Forged
-- c.) Typically Requires Biometrics to Use
+- Locked to your user's device
+- Can't Be Stolen or Forged
+- Typically Requires Biometrics to Use
 
 ### Registration
 
-Once the user has logged in, they'll create a new passkey on their side and give you the passkey's ID and a payload - which verifies the passkey they created.
+1. Once the user has logged in, they'll create a new passkey on their side and give you the passkey's ID and a payload - which verifies the passkey they created.
 
-Next, you send the payload to our API to be decrypted and verified.
+2. Next, you send the payload to our API to be decrypted and verified.
 
-Once verified, you need to associate the passkey's ID with that user in your database.
+3. Once verified, you need to associate the passkey's ID with that user in your database.
 
 That's it! In the future, anyone who can verify ownership of that passkey ID must be _THAT_ user! Simple, right?
 
@@ -41,11 +43,11 @@ That's it! In the future, anyone who can verify ownership of that passkey ID mus
 
 This is flexible enough to work however you want to do it; but here's what works for us:
 
-Someone sends you a passkey id of ${x}, and a verification payload.
+1. Someone sends you a passkey id of ${x}, and a verification payload.
 
-Send the payload to our API to be verified.
+2. Send the payload to our API to be verified.
 
-If its verified, look up the user in your database by their passkey-id.
+3. If its verified, look up the user in your database by their passkey-id.
 
 Now that you've authenticated the user, set a session cookie or something.
 
