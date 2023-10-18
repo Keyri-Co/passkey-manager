@@ -125,20 +125,19 @@ console.log('Auto-fill Success:', success);
 #### Methods
 
 - **load(): Promise<void>**
-  - Initializes the PassKeys instance.
   - Returns a promise that resolves when the manager is loaded.
 
-### PassKeys
+### manager
 
 #### Methods
 
 - **register(userId: string, userName: string, userDisplayName: string, rpName: string): Promise<{ id: string; payload: string }>**
   - Creates a Passkey for your site on the user's device
-  - Returns a promise with the registration ID and the Base64 encoded encrypted results.
+  - Returns a promise with the passkey ID and the Base64 encoded encrypted results.
 
 - **authenticate(autoFill?: boolean): Promise<{ id: string; payload: string }>**
-  - Initiates WebAuthn authentication and returns the encrypted results.
-  - Returns a promise with the authentication ID and the Base64 encoded encrypted results.
+  - Initiates Passkey authentication.
+  - Returns a promise with the passkey ID and the Base64 encoded encrypted results.
 
 - **autoFill(): Promise<boolean>**
   - Performs an auto-fill operation based on WebAuthn.
@@ -158,7 +157,7 @@ Next, under "Setup And Credentials", get your `Application Key`.
 
 ### Temporary Key
 
-To drop latency, (and lower the amount of database calls we have to make) - you need to get a temporary-key that's good for 24 hours, which you can get like this:
+To drop latency, - you need to get a temporary-key that's good for 24 hours, which you can get like this:
 
 ```bash
 curl -X GET https://api-keys.keyri.com -H "x-api-key: qr...P1U"
@@ -171,10 +170,10 @@ which returns the following:
     "ttl": 1697723187193,
     "key": "eyJ...SJ9"
 }
+```
 
 This will be used in future API Calls such as `register` and `authenticate`
 
-```
 ### Register
 
 When verifying a user's registration request, forward whatever they sent you to our API [https://passkeys.keyri.com/v1/register]:
