@@ -2,6 +2,8 @@
 
 **Passkey Manager** is a JavaScript module designed to manage WebAuthn registration and authentication processes. It aims to de-mystify and simplify the whole 'PassKey' process, and get you up and running in under 15 - 30 minutes.
 
+WebAuthn (Passkeys) is a web standard introduced by the World Wide Web Consortium (W3C) to revolutionize the way users authenticate online. By eliminating the need for passwords, Passkeys offer a more secure, phishing-resistant, and user-friendly authentication method, relying on biometrics, hardware tokens, or mobile devices. Integrating Passkeys can significantly enhance user security and provide a seamless login experience, making it a crucial step forward in modern web development.
+
 ---
 
 ## Table of Contents
