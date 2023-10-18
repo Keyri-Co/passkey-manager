@@ -113,11 +113,7 @@ const status = await keyManager.manager.RegistrationStatus();
 console.log('Registration Status:', status);
 ```
 
-## Server Documentation
-
-
-
-## API Documentation
+## Client Library Documentation
 
 ### KeyManager
 
@@ -146,6 +142,49 @@ console.log('Registration Status:', status);
 - **RegistrationStatus(): Promise<string>**
   - Checks the user's registration status with the IndexedDB.
   - Returns a promise indicating the registration status.
+
+
+## Server Documentation
+
+First, register your site with [Keyri](https://app.keyri.com/sign-up).
+
+Next, under "Setup And Credentials", get your `Application Key`.
+
+### Temporary Key
+
+Now that you're set up - you need a temporary-key that's good for 24 hours, which you can get like this:
+
+```bash
+curl -X GET https://api-keys.keyri.com -H "x-api-key: qr...P1U"
+```
+
+which returns the following:
+
+```javascript
+{
+    "ttl": 1697723187193,
+    "key": "eyJ...SJ9"
+}
+```
+### Register
+
+Forward whatever the client sent you (which should look like this):
+
+```javascript
+{"id": "xxx", "payload": "eyJhd...xe=="}
+```
+
+to https://passkeys.keyri.com/v1/register
+
+```bash
+curl -X POST https://passkeys.keyri.com/v1/register \
+-H "Content-Type: application/json" \
+-H "x-api-key: qr...P1U" \
+-H "x-temp-key: eyJ...SJ9" \
+-d '{"id": "xxx", "payload": "eyJhd...xe=="}'
+```
+
+### Authenticate
 
 ## Support
 
