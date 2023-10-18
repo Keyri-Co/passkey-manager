@@ -2,6 +2,8 @@
 
 **Passkey Manager** is a JavaScript module designed to manage WebAuthn registration and authentication processes. It aims to de-mystify and simplify the whole 'PassKey' process, and get you up and running in under 15 - 30 minutes.
 
+---
+
 ## Table of Contents
 - [Installation](#installation)
 - [Usage](#usage)
@@ -20,6 +22,8 @@ To install Passkey Manager, run the following command in your project directory:
 ```
 npm install passkey-manager
 ```
+
+---
 
 ## Key Concepts
 
@@ -52,6 +56,8 @@ This is flexible enough to work however you want to do it; but here's what works
 3. If its verified, look up the user in your database by their passkey-id.
 
 Now that you've authenticated the user, set a session cookie or something.
+
+---
 
 ## Browser Library
 
@@ -110,6 +116,8 @@ const success = await keyManager.manager.autoFill();
 console.log('Auto-fill Success:', success);
 ```
 
+---
+
 ## Client Library Documentation
 
 ### KeyManager
@@ -125,7 +133,7 @@ console.log('Auto-fill Success:', success);
 #### Methods
 
 - **register(userId: string, userName: string, userDisplayName: string, rpName: string): Promise<{ id: string; payload: string }>**
-  - Registers a user, initializes the IndexedDB, and stores the encrypted registration results.
+  - Creates a Passkey for your site on the user's device
   - Returns a promise with the registration ID and the Base64 encoded encrypted results.
 
 - **authenticate(autoFill?: boolean): Promise<{ id: string; payload: string }>**
@@ -140,6 +148,7 @@ console.log('Auto-fill Success:', success);
   - Checks the user's registration status with the IndexedDB.
   - Returns a promise indicating the registration status.
 
+---
 
 ## Server Documentation
 
@@ -149,7 +158,7 @@ Next, under "Setup And Credentials", get your `Application Key`.
 
 ### Temporary Key
 
-To drop latency, and lower the amount of database calls we have to make - you need to get a temporary-key that's good for 24 hours, which you can get like this:
+To drop latency, (and lower the amount of database calls we have to make) - you need to get a temporary-key that's good for 24 hours, which you can get like this:
 
 ```bash
 curl -X GET https://api-keys.keyri.com -H "x-api-key: qr...P1U"
@@ -162,6 +171,9 @@ which returns the following:
     "ttl": 1697723187193,
     "key": "eyJ...SJ9"
 }
+
+This will be used in future API Calls such as `register` and `authenticate`
+
 ```
 ### Register
 
@@ -182,9 +194,28 @@ curl -X POST https://passkeys.keyri.com/v1/register \
 
 ### Authenticate
 
+When verifying a user's authentication request, forward whatever they sent you to our API [https://passkeys.keyri.com/v1/authenticate]:
+
+```javascript
+// Data from user
+{"id": "xxx", "payload": "eyJhd...xe=="}
+```
+
+```bash
+curl -X POST https://passkeys.keyri.com/v1/authenticate \
+-H "Content-Type: application/json" \
+-H "x-api-key: qr...P1U" \
+-H "x-temp-key: eyJ...SJ9" \
+-d '{"id": "xxx", "payload": "eyJhd...xe=="}'
+```
+
+---
+
 ## Support
 
 For support or any questions, please reach out to [support@email.com](mailto:support@email.com).
+
+---
 
 ## License
 
