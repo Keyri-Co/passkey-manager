@@ -60,12 +60,11 @@ import { KeyManager } from 'passkey-manager';
 
 const keyManager = new KeyManager();
 await keyManager.load();
-
 ```
 
 ### Checking Registration Status
 
-Determine if the user has a Passkey on your site with the current browser:
+Check if the user has a Passkey on your site with their current browser.
 
 ```javascript
 const status = await keyManager.manager.RegistrationStatus();
@@ -107,8 +106,6 @@ const success = await keyManager.manager.autoFill();
 console.log('Auto-fill Success:', success);
 ```
 
-
-
 ## Client Library Documentation
 
 ### KeyManager
@@ -148,7 +145,7 @@ Next, under "Setup And Credentials", get your `Application Key`.
 
 ### Temporary Key
 
-Now that you're set up - you need a temporary-key that's good for 24 hours, which you can get like this:
+To drop latency, and lower the amount of database calls we have to make - you need to get a temporary-key that's good for 24 hours, which you can get like this:
 
 ```bash
 curl -X GET https://api-keys.keyri.com -H "x-api-key: qr...P1U"
