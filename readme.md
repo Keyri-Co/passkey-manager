@@ -23,11 +23,13 @@ npm install passkey-manager
 
 ## Key Concepts
 
-Passkeys can be used to identify your site's users with high confidence since they're
+Passkeys are a more secure alternative to using passwords, SMS Text Message Verification, or Email Link Verification to identify users because they're
 
-- Locked to your user's device
+- Locked in user's device
 - Can't Be Stolen or Forged
-- Typically Requires Biometrics to Use
+- Typically Require Biometrics to Use
+
+Below is a _HIGH_ level overview of how you can easily integrate them into your site:
 
 ### Registration
 
