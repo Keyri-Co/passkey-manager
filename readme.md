@@ -76,7 +76,7 @@ await keyManager.load();
 
 ### Checking Registration Status
 
-Check if the user has a Passkey on your site with their current browser.
+To check if a user has already registered a Passkey with your site, use the following method:
 
 ```javascript
 const status = await keyManager.manager.RegistrationStatus();
@@ -214,7 +214,7 @@ curl -X POST https://passkeys.keyri.com/v1/authenticate \
 
 ## Support
 
-For support or any questions, please reach out to [support@email.com](mailto:support@email.com).
+For support or any questions, please reach out to [support@keyri.com](mailto:support@keyri.com).
 
 ---
 
