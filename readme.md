@@ -23,9 +23,9 @@ npm install passkey-manager
 
 Passkeys can be used to identify your site's users with high confidence since they're
 
-a.) Locked to your user's device
-b.) Can't Be Stolen or Forged
-c.) Usually require biometrics to use
+- a.) Locked to your user's device
+- b.) Can't Be Stolen or Forged
+- c.) Typically Requires Biometrics to Use
 
 ### Registration
 
