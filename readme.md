@@ -68,9 +68,9 @@ Now that you've authenticated the user, set a session cookie or something.
 To use Passkey Manager in your project, import and instantiate it as follows:
 
 ```javascript
-import { KeyManager } from 'passkey-manager';
+import { PasskeyManager } from 'passkey-manager';
 
-const keyManager = new KeyManager();
+const keyManager = new PasskeyManager();
 await keyManager.load();
 ```
 
@@ -122,7 +122,7 @@ console.log('Auto-fill Success:', success);
 
 ## Client Library Documentation
 
-### KeyManager
+### PasskeyManager
 
 #### Methods
 
